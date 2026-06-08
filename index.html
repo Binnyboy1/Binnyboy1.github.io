@@ -1,10 +1,451 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My GitHub Pages Site</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>This is my site at https://binnyboy1.github.io/</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binnyboy1.github.io</title>
+  
+  <!-- Base Style Guide -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Layout & Navigation -->
+  <link rel="stylesheet" href="css/layout.css">
+  
+  <!-- Page-specific Styles -->
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/pages/blog.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">Binnyboy1</div>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar (Ctrl+B)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="nav-link active" data-page="home">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Home</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="about">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>About</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="projects">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <span>Projects</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="blog">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>Blog</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="gallery">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>Gallery</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="resume">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <polyline points="17 11 19 11 22 11"></polyline>
+              </svg>
+              <span>Resume</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="services">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              <span>Services</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="contact">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Contact</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="faq">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>FAQ</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="links">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              <span>Links</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="terms">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              <span>Terms</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" data-page="privacy">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Privacy</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- PAGE 1: Home -->
+      <article id="home" class="page active">
+        <header class="page-header">
+          <h1 class="page-title">Welcome</h1>
+          <p class="page-description">Welcome to my personal website. Explore using the sidebar navigation.</p>
+        </header>
+        <div class="page-content">
+          <p>This is the home page. Use the left sidebar to navigate between different sections of the site.</p>
+          <p>The sidebar can be collapsed by clicking the toggle button or pressing Ctrl+B.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 2: About -->
+      <article id="about" class="page">
+        <header class="page-header">
+          <h1 class="page-title">About</h1>
+          <p class="page-description">Learn more about me.</p>
+        </header>
+        <div class="page-content">
+          <p>About me content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 3: Projects -->
+      <article id="projects" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Projects</h1>
+          <p class="page-description">Check out my recent work.</p>
+        </header>
+        <div class="page-content">
+          <p>Projects content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 4: Blog — Ganyu Character Guide (document layout with TOC) -->
+      <article id="blog" class="page blog-page">
+        <header class="page-header">
+          <h1 class="page-title">Blog</h1>
+          <p class="page-description">Ganyu Character Guide — Sample document layout with a dynamic Table of Contents sidebar.</p>
+        </header>
+
+        <!--
+          Two-column flex layout.
+          .blog-article-body  → the document content (H1 / H2 / H3 headings + prose)
+          .blog-toc-container → empty placeholder; toc.js injects the TOC here
+        -->
+        <div class="blog-layout">
+
+          <!-- ═══ Article body ══════════════════════════════════════ -->
+          <div class="blog-article-body">
+
+            <!-- ─── Introduction (H1) ─────────────────────────────── -->
+            <h1 id="introduction">Introduction</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum ultrices, nunc augue faucibus dolor, sit amet commodo diam libero vitae erat.</p>
+
+            <!-- Why Play Ganyu? (H3) -->
+            <h3 id="why-play-ganyu">Why Play Ganyu?</h3>
+            <p>Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.</p>
+            <p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.</p>
+
+            <!-- Glossary (H3) -->
+            <h3 id="glossary">Glossary</h3>
+            <p>Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+            <p>Per inceptos hymenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet.</p>
+
+            <!-- TL;DR (H3) -->
+            <h3 id="tldr">TL;DR</h3>
+            <p>Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam.</p>
+
+            <!-- FAQ (H3) -->
+            <h3 id="faq">FAQ</h3>
+            <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Morbi lacinia molestie dui. Praesent blandit laoreet nibh. Fusce facilisis purus sit amet lorem. Nunc pellentesque, malesuada at, tincidunt sed, laoreet quis, metus.</p>
+            <p>Praesent fermentum tempor tellus. Nullam tempus. Mauris ac felis vel velit tristique imperdiet. Donec at pede. Etiam vel neque nec dui dignissim bibendum. Vivamus id enim. Phasellus neque orci, porta a, aliquet quis, semper a, massa.</p>
+
+
+            <!-- ─── Character Overview (H1) ──────────────────────── -->
+            <h1 id="character-overview">Character Overview</h1>
+            <p>Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna.</p>
+            <p>Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Morbi lacinia molestie dui.</p>
+
+            <!-- Playstyles (H3) -->
+            <h3 id="playstyles">Playstyles</h3>
+            <p>Praesent blandit laoreet nibh. Fusce facilisis purus sit amet lorem. Nunc pellentesque, malesuada at, tincidunt sed, laoreet quis, metus. Praesent fermentum tempor tellus. Nullam tempus. Mauris ac felis vel velit tristique imperdiet.</p>
+            <p>Donec at pede. Etiam vel neque nec dui dignissim bibendum. Vivamus id enim. Phasellus neque orci, porta a, aliquet quis, semper a, massa. Phasellus purus. Pellentesque tristique imperdiet tortor.</p>
+
+            <!-- Talents (H3) -->
+            <h3 id="talents">Talents</h3>
+            <p>Nam euismod tellus id erat. Nullam eu ante vel est convallis dignissim. Fusce lobortis lorem at ipsum semper sagittis. Vivamus pellentesque augue scelerisque nibh varius, eget condimentum felis ornare.</p>
+            <p>Ut blandit scelerisque ipsum, vel condimentum eros bibendum vel. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh.</p>
+
+            <!-- Constellations (H3) -->
+            <h3 id="constellations">Constellations</h3>
+            <p>Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Nullam in massa sed elit volutpat condimentum. Morbi ipsum ipsum, lobortis sit amet, consequat sed.</p>
+            <p>Auctor non, felis. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Suspendisse congue velit at felis. Pellentesque porttitor, velit lacinia egestas auctor, diam erat pretium urna.</p>
+
+
+            <!-- ─── Talent Priority & Artifacts (H1) ─────────────── -->
+            <h1 id="talent-priority">Talent Priority &amp; Artifacts</h1>
+            <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>
+            <p>Nullam in massa sed elit volutpat condimentum. Morbi ipsum ipsum, lobortis sit amet, consequat sed, auctor non, felis. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+
+            <!-- Freeze Builds (H3) -->
+            <h3 id="freeze-builds">Freeze Builds</h3>
+            <p>Pellentesque elementum ligula at eros tincidunt pellentesque. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+            <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+
+            <!-- Melt Builds (H3) -->
+            <h3 id="melt-builds">Melt Builds</h3>
+            <p>Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>
+            <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.</p>
+
+            <!-- Mono Cryo Builds (H3) -->
+            <h3 id="mono-cryo-builds">Mono Cryo Builds</h3>
+            <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.</p>
+            <p>Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. In ac dui quis mi consectetuer lacinia.</p>
+
+            <!-- Support Builds (H3) -->
+            <h3 id="support-builds">Support Builds</h3>
+            <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris.</p>
+
+
+            <!-- ─── Weapons (H1) ──────────────────────────────────── -->
+            <h1 id="weapons">Weapons</h1>
+            <p>Sed commodo posuere pede. Mauris ut est. Ut quis purus. Sed ac odio. Sed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed ullamcorper, nunc vitae condimentum luctus, nunc sem porttitor metus, non laoreet arcu turpis non mauris.</p>
+            <p>Aliquam erat volutpat. Nunc eleifend leo vitae magna. In id erat non orci commodo lobortis. Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus. Sed dignissim lacinia nunc.</p>
+
+            <!-- Weapon Overview (H3) -->
+            <h3 id="weapon-overview">Weapon Overview</h3>
+            <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum ultrices, nunc augue faucibus dolor, sit amet commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet.</p>
+            <p>Nunc ut sem vitae risus tristique posuere. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor.</p>
+
+            <!-- Weapon Comparisons (H3) -->
+            <h3 id="weapon-comparisons">Weapon Comparisons</h3>
+            <p>Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum.</p>
+
+
+            <!-- ─── Teammates (H1) ────────────────────────────────── -->
+            <h1 id="teammates">Teammates</h1>
+            <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+            <p>Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>
+            <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
+
+
+            <!-- ─── Teams (H1) ───────────────────────────────────── -->
+            <h1 id="teams">Teams</h1>
+            <p>Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui.</p>
+            <p>Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu.</p>
+
+            <!-- Freeze Teams (H3) -->
+            <h3 id="freeze-teams">Freeze Teams</h3>
+            <p>Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend.</p>
+
+            <!-- Melt Teams (H3) -->
+            <h3 id="melt-teams">Melt Teams</h3>
+            <p>Ut nonummy. Fusce aliquet pede non pede. Suspendisse dapibus lorem pellentesque magna. Integer nulla. Donec blandit feugiat ligula. Donec hendrerit, felis et imperdiet euismod, purus ipsum pretium metus, in lacinia nulla nisl eget sapien.</p>
+            <p>Donec ut est in lectus consequat consequat. Etiam eget dui. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh.</p>
+
+            <!-- Mono Cryo Teams (H3) -->
+            <h3 id="mono-cryo-teams">Mono Cryo Teams</h3>
+            <p>Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Nullam in massa sed elit volutpat condimentum. Morbi ipsum ipsum, lobortis sit amet.</p>
+
+
+            <!-- ─── Credits (H1) ─────────────────────────────────── -->
+            <h1 id="credits">Credits</h1>
+            <p>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. Nullam in massa sed elit volutpat condimentum.</p>
+
+            <!-- Testing highlight bar pt1 (H2) — same indent as H1 in TOC -->
+            <h2 id="testing-pt1">Testing highlight bar pt1</h2>
+            <p>Nullam in massa sed elit volutpat condimentum. Morbi ipsum ipsum, lobortis sit amet, consequat sed, auctor non, felis. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+            <p>Suspendisse congue velit at felis. Pellentesque porttitor, velit lacinia egestas auctor, diam erat pretium urna, eu ullamcorper urna arcu eu arcu. Sed dapibus, ante blandit vehicula aliquam, nisl est eleifend sapien.</p>
+
+            <!-- Testing highlight bar pt2 (H2) — same indent as H1 in TOC -->
+            <h2 id="testing-pt2">Testing highlight bar pt2</h2>
+            <p>Nec tempor dui purus vel dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce facilisis purus sit amet lorem. Nunc pellentesque, malesuada at, tincidunt sed, laoreet quis, metus.</p>
+            <p>Praesent fermentum tempor tellus. Nullam tempus. Mauris ac felis vel velit tristique imperdiet. Donec at pede. Etiam vel neque nec dui dignissim bibendum. Vivamus id enim phasellus neque orci porta aliquet.</p>
+
+
+            <!-- ─── References (H1) ──────────────────────────────── -->
+            <h1 id="references">References</h1>
+            <p>Nullam tempus. Mauris ac felis vel velit tristique imperdiet. Donec at pede. Etiam vel neque nec dui dignissim bibendum. Vivamus id enim. Phasellus neque orci, porta a, aliquet quis, semper a, massa. Phasellus purus.</p>
+            <p>Pellentesque tristique imperdiet tortor. Nam euismod tellus id erat. Nullam eu ante vel est convallis dignissim. Fusce lobortis lorem at ipsum semper sagittis. Vivamus pellentesque augue scelerisque nibh varius.</p>
+
+          </div><!-- /.blog-article-body -->
+
+          <!-- ═══ TOC sidebar (populated by js/toc.js) ═══════════ -->
+          <div class="blog-toc-container" aria-label="Table of contents"></div>
+
+        </div><!-- /.blog-layout -->
+      </article>
+      
+      <!-- PAGE 5: Gallery -->
+      <article id="gallery" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Gallery</h1>
+          <p class="page-description">Photo gallery and media.</p>
+        </header>
+        <div class="page-content">
+          <p>Gallery content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 6: Resume -->
+      <article id="resume" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Resume</h1>
+          <p class="page-description">My professional experience and skills.</p>
+        </header>
+        <div class="page-content">
+          <p>Resume content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 7: Services -->
+      <article id="services" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Services</h1>
+          <p class="page-description">What I can offer.</p>
+        </header>
+        <div class="page-content">
+          <p>Services content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 8: Contact -->
+      <article id="contact" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Contact</h1>
+          <p class="page-description">Get in touch.</p>
+        </header>
+        <div class="page-content">
+          <p>Contact content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 9: FAQ -->
+      <article id="faq" class="page">
+        <header class="page-header">
+          <h1 class="page-title">FAQ</h1>
+          <p class="page-description">Frequently asked questions.</p>
+        </header>
+        <div class="page-content">
+          <p>FAQ content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 10: Links -->
+      <article id="links" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Links</h1>
+          <p class="page-description">Useful links and resources.</p>
+        </header>
+        <div class="page-content">
+          <p>Links content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 11: Terms -->
+      <article id="terms" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Terms of Service</h1>
+          <p class="page-description">Terms and conditions.</p>
+        </header>
+        <div class="page-content">
+          <p>Terms content goes here.</p>
+        </div>
+      </article>
+      
+      <!-- PAGE 12: Privacy -->
+      <article id="privacy" class="page">
+        <header class="page-header">
+          <h1 class="page-title">Privacy Policy</h1>
+          <p class="page-description">How I handle your data.</p>
+        </header>
+        <div class="page-content">
+          <p>Privacy content goes here.</p>
+        </div>
+      </article>
+    </main>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/toc.js"></script>
+</body>
 </html>

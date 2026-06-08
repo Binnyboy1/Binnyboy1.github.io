@@ -1,0 +1,290 @@
+/* ============================================================
+   BLOG.CSS — Blog Page Layout & TOC Sidebar Styles
+   ============================================================
+   Depends on style.css CSS variables being loaded first.
+
+   Two-column layout:
+     Left  · .blog-article-body  — scrolls with page
+     Right · .blog-toc-container — sticky, never scrolls
+
+   TOC sidebar has two overlapping children (.toc-grid):
+     Child 1 · .toc-text-child   — text nav, shown on hover
+     Child 2 · .toc-bars-child   — minimap bars, default view
+   ============================================================ */
+
+/* ── Page-level layout ───────────────────────────────────── */
+
+.blog-page .page-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+/*
+ * Two-column flex: article body (fills space) + TOC (fixed width).
+ * align-items: flex-start is critical — it allows .blog-toc-container
+ * to use position:sticky (stretch would prevent it).
+ */
+.blog-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+/* ── Article body ────────────────────────────────────────── */
+
+.blog-article-body {
+  flex: 1;
+  min-width: 0;       /* prevent flex blowout on long words */
+  max-width: 800px;
+}
+
+/* Article headings — sized smaller than the page-title H1 */
+.blog-article-body h1 {
+  font-size: var(--font-size-xl);   /* 24 px */
+  font-weight: 700;
+  margin-top: var(--spacing-xxl);   /* 48 px */
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+}
+
+.blog-article-body h1:first-child {
+  margin-top: 0;
+}
+
+.blog-article-body h2 {
+  font-size: var(--font-size-lg);   /* 18 px */
+  font-weight: 700;
+  margin-top: var(--spacing-xl);    /* 32 px */
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+}
+
+.blog-article-body h3 {
+  font-size: var(--font-size-base); /* 16 px */
+  font-weight: 600;
+  margin-top: var(--spacing-lg);    /* 24 px */
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  scroll-margin-top: 24px;
+}
+
+.blog-article-body p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+}
+
+/* ── TOC container (sticky wrapper) ─────────────────────── */
+
+.blog-toc-container {
+  width: 175px;
+  flex-shrink: 0;
+
+  /* Stick 32 px below the viewport top while the article scrolls */
+  position: sticky;
+  top: var(--spacing-xl);     /* 32 px */
+  align-self: flex-start;     /* required for sticky inside flex */
+
+  /* Prevent the container itself from overflowing the viewport */
+  max-height: calc(100vh - var(--spacing-xl) * 2);
+  overflow: hidden;
+}
+
+/* ── TOC wrapper (the hover trigger) ────────────────────── */
+
+.toc-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+/*
+ * CSS grid trick: both children share grid-area 1/1 so they
+ * stack in the same cell. Opacity transitions swap which is visible.
+ */
+.toc-grid {
+  display: grid;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CHILD 1 · Text nav
+   · opacity 0  by default  (pointer-events: none)
+   · opacity 1  on hover    (pointer-events: auto)
+   ───────────────────────────────────────────────────────── */
+
+.toc-text-child {
+  grid-area: 1 / 1;
+  z-index: 2;                 /* sits above bars during cross-fade */
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+
+  max-height: calc(100vh - var(--spacing-xl) * 2);
+  overflow-y: auto;
+
+  /* Firefox thin scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+}
+
+/* WebKit thin scrollbar — arrows hidden, track invisible */
+.toc-text-child::-webkit-scrollbar {
+  width: 3px;
+}
+.toc-text-child::-webkit-scrollbar-track {
+  background: transparent;
+}
+.toc-text-child::-webkit-scrollbar-thumb {
+  background-color: var(--border-light);
+  border-radius: 9999px;
+}
+.toc-text-child::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* Reveal text nav on hover */
+.toc-wrapper:hover .toc-text-child {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* "On this page" label */
+.toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Individual nav links */
+.toc-nav-link {
+  display: block;
+  padding: 3px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  /* Let long headings wrap naturally rather than truncate */
+  white-space: normal;
+  word-break: break-word;
+}
+
+.toc-nav-link:hover {
+  color: var(--text-primary);
+}
+
+/* Active heading in the text nav */
+.toc-nav-link.toc-nav-active {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CHILD 2 · Minimap bars
+   · opacity 1  by default  (always pointer-events: none)
+   · opacity 0  on hover
+   ───────────────────────────────────────────────────────── */
+
+.toc-bars-child {
+  grid-area: 1 / 1;
+  z-index: 1;
+
+  /* Vertical flex column; gap: 1px so rows are exactly 13 px apart */
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  /*
+   * 12 px left padding creates the gutter for the absolutely-
+   * positioned highlight bar that hugs the left edge (left: 0).
+   */
+  padding-left: 12px;
+
+  max-height: calc(100vh - var(--spacing-xl) * 2);
+  overflow: hidden;
+
+  align-self: flex-start;   /* shrink to content height */
+  pointer-events: none;     /* never intercepts clicks */
+  transition: opacity 200ms ease;
+}
+
+/* Hide bars while text nav is shown */
+.toc-wrapper:hover .toc-bars-child {
+  opacity: 0;
+}
+
+/* ── Vertical highlight bar ──────────────────────────────── */
+
+/*
+ * Sits at left: 0 of .toc-bars-child (inside the 12 px gutter).
+ * JS sets `transform: translateY(Npx)` and `height: Mpx`.
+ * Spans from the current H1 section down to the current heading.
+ */
+.toc-highlight-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  background-color: var(--text-primary);
+  border-radius: 9999px;
+
+  /* Smooth repositioning when section changes */
+  transition: transform 300ms ease, height 300ms ease;
+}
+
+/* ── Bar rows ────────────────────────────────────────────── */
+
+/*
+ * Each row is 12 px tall (matching ROW_HEIGHT in toc.js).
+ * H3 rows get additional left padding via inline style (12 px).
+ * H1 and H2 rows have no additional padding — same left edge.
+ */
+.toc-bar-row {
+  display: flex;
+  align-items: center;
+  height: 12px;       /* ROW_HEIGHT */
+  flex-shrink: 0;
+}
+
+/* The horizontal bar itself — 2 px tall, rounded ends */
+.toc-bar {
+  height: 2px;
+  border-radius: 9999px;
+  background-color: var(--border-color);
+  transition: background-color 300ms ease;
+}
+
+/* Active heading's bar brightens to match the highlight bar */
+.toc-bar.toc-bar-active {
+  background-color: var(--text-primary);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+/* Hide TOC on narrower viewports where it would crowd the content */
+@media (max-width: 1024px) {
+  .blog-toc-container {
+    display: none;
+  }
+
+  .blog-layout {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-article-body {
+    max-width: 100%;
+  }
+}
